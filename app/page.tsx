@@ -44,7 +44,7 @@ export default function Home() {
   useEffect(() => {
     const fetchDishes = async () => {
       try {
-        setLoading(true); // <-- start loading
+        setLoading(true);
         const res = await fetch(`${API_URL}/api/dish/fetchAll`);
         const response = await res.json();
         console.log(response);
@@ -76,7 +76,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="text-center my-64 text-[17px] text-white opacity-80 leading-tight">
+        <div className="text-center fixed my-64 text-[17px] text-white opacity-80 leading-tight">
           <div className="font-bold">
             <h1>Developed by</h1>
             <span className="font-semibold">Roshan Kumar Patel</span>
