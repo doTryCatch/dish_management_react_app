@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { dishDTO } from "../page";
 import { toast } from "react-toastify";
+import { API_URL } from "../utils/apiUtl";
 
 export const FoodCard = ({ dishes }: { dishes: dishDTO[] | null }) => {
   const handleUpdate = async (id: number, status: boolean) => {
     try {
-      await fetch("http://localhost:4000/api/dish/update", {
+      await fetch(`${API_URL}/api/dish/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

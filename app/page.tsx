@@ -8,6 +8,7 @@ import dish3 from "@/public/dish3.jpg";
 import { FoodCard } from "./components/foodCard";
 import { useEffect, useState } from "react";
 import { Stats } from "./components/stats";
+import { API_URL } from "./utils/apiUtl";
 
 export interface dishDTO {
   dishId: number;
@@ -26,7 +27,7 @@ export default function Home() {
   const socketRef = useRef<Socket | null>(null);
   useEffect(() => {
     if (!socketRef.current) {
-      socketRef.current = io("http://localhost:4000");
+      socketRef.current = io(API_URL);
     }
     socketRef.current.on("statusUpdated", () => {
       setUpdate((prev) => !prev);
@@ -38,7 +39,7 @@ export default function Home() {
   useEffect(() => {
     const fetchDishes = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/dish/fetchAll");
+        const res = await fetch(`${API_URL}/api/dish/fetchAll`);
         const response = await res.json();
         console.log(response);
         setDish(response.data);
